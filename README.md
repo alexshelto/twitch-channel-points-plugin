@@ -1,0 +1,1 @@
+Twitch plugin for channel points click
