@@ -1,1 +1,0 @@
-# twitch-channel-points-plugin

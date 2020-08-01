@@ -1,0 +1,252 @@
+<!--
+Filename: /Users/alexshelton/Desktop/twitch-channel-points-plugin/popup.html
+Path: /Users/alexshelton/Desktop/twitch-channel-points-plugin
+Created Date: Wednesday, July 29th 2020, 3:35:19 pm
+Author: Alex Shelton
+
+Copyright (c) 2020 Your Company
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitch Channel Points</title>
+
+    <!-- Style -->
+    <style type='text/css'>
+
+        body {
+            min-width: 300px; /* your desired width */
+            max-width: 100%;
+            min-height: 300px;
+            max-height: 100%;
+            position: relative;
+            vertical-align:middle;
+          }
+
+        /*vertical line*/
+        .vl {
+            border-left: 6px black;
+            height: 30px;
+        }
+
+        .onoffswitch {
+            position: relative; width: 70px;
+            -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+        }
+        .onoffswitch-checkbox {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .onoffswitch-label {
+            display: block; overflow: hidden; cursor: pointer;
+            border: 2px solid #999999; border-radius: 50px;
+        }
+        .onoffswitch-inner {
+            display: block; width: 200%; margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+        }
+        .onoffswitch-inner:before, .onoffswitch-inner:after {
+            display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+            font-size: 16px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+            box-sizing: border-box;
+        }
+        .onoffswitch-inner:before {
+            content: "ON";
+            padding-left: 10px;
+            background-color: #6A41B5; color: #FFFFFF;
+        }
+        .onoffswitch-inner:after {
+            content: "OFF";
+            padding-right: 10px;
+            background-color: #474041; color: #FFFFFF;
+            text-align: right;
+        }
+        .onoffswitch-switch {
+            display: block; width: 18px; margin: 3.5px;
+            background: #EBEBEB;
+            position: absolute; top: 0; bottom: 0;
+            right: 41px;
+            border: 2px solid #999999; border-radius: 50px;
+            transition: all 0.3s ease-in 0s; 
+        }
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+            margin-left: 0;
+        }
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+            right: 0px; 
+        }
+
+
+
+          #points-display {
+              padding-left: 20px;
+              padding-right: 20px;
+          }
+
+          #stats-page{
+            position: absolute;
+
+            left: 0px;
+            width: 50%;
+        }
+          #stats-total{
+            position: absolute;
+
+
+            right: 0px;
+            width: 50%;
+          }
+
+        #defualt-container {
+            padding: 20px;
+            height: 200px;
+            background-color: #DEFFFd;
+        }
+        #on-off {
+            padding: 5px;
+            height: 40px;
+            width: 80%;
+            vertical-align: auto;
+
+        }
+    </style>
+    <!-- end style -->
+
+
+
+
+
+
+    <button id="settings">Settings</button>
+    <h1>Twitch Clicker</h1>
+</head>
+<body>
+    
+    <div class='top'>
+        <hr class='solid'>
+
+        <!-- <div id='on-off'>
+            <a>Off</a>
+        </div> -->
+
+        <div class="onoffswitch">
+            <input type="checkbox" value="OFF" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0">
+            <label class="onoffswitch-label" for="myonoffswitch">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+    
+        <hr class='solid'>
+
+
+
+    </div>
+
+
+
+    <div id='default-container'>
+        <h2 class='status_header'>Number of points clicked</h2>
+
+        <div id='points-display'>
+            
+            <div class='stats'>
+                <div id='stats-page'>
+                    <span>on this stream</span>
+                    <strong id='current-value' class='amount'></strong>
+
+                </div>
+
+                <div id='stats-total'>
+                    <span>in total</span>
+                    <strong id=total-value class='amount'></strong>
+
+                </div>
+
+
+
+            </div>
+
+
+    </div>
+
+
+
+    <script src='popup.js'></script>     
+</body>
+
+</html>
+
+
+<!-- 
+
+
+
+.onoffswitch {
+    position: relative; width: 70px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 50px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+    font-size: 16px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #6A41B5; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #474041; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 18px; margin: 3.5px;
+    background: #EBEBEB;
+    position: absolute; top: 0; bottom: 0;
+    right: 41px;
+    border: 2px solid #999999; border-radius: 50px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+
+
+
+
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+
+
+
+ -->
